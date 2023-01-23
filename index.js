@@ -22,6 +22,13 @@ const run = async () => {
     const userCollection = db.collection("user");
     const jobCollection = db.collection("job");
 
+    app.get("/users", async (req, res) =>{
+      const cursor = userCollection.find({});
+      const product = await cursor.toArray();
+
+      res.send({status: true, data: product})
+    })
+
     app.post("/user", async (req, res) => {
       const user = req.body;
 
